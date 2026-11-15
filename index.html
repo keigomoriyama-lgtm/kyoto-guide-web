@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<title>Kyoto Workshop Guide</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+:root{--bg:#000;--card:rgba(255,255,255,.07);--card2:rgba(255,255,255,.08);--text:#fff;--dim:rgba(255,255,255,.65);--faint:rgba(255,255,255,.45);--accent:#ffc928;--line:rgba(255,255,255,.1)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans JP",sans-serif;line-height:1.4}
+body{padding-bottom:env(safe-area-inset-bottom)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+svg.i{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em;flex:none}
+#app{max-width:680px;margin:0 auto;min-height:100vh}
+.hero{position:relative;height:220px;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 25%,rgba(0,0,0,.15) 55%,rgba(0,0,0,.92))}
+.hero .ttl{position:absolute;left:20px;bottom:18px;right:20px}
+.hero .k{font-size:38px;font-weight:900;line-height:1.05}
+.hero .w{font-size:24px;font-weight:900;line-height:1.1}
+.hero .s{font-size:14px;font-weight:500;margin-top:4px}
+.menu-btn{position:absolute;top:calc(12px + env(safe-area-inset-top));right:14px;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:22px}
+.tabs{display:flex;gap:2px;margin:14px 16px;padding:3px;background:rgba(255,255,255,.07);border-radius:20px}
+.tabs a{flex:1;height:48px;display:flex;align-items:center;justify-content:center;border-radius:17px;font-weight:900;font-size:15px;color:var(--dim)}
+.tabs a.on{background:rgba(255,255,255,.16);color:var(--accent)}
+.pad{padding:0 16px 28px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.tile{position:relative;display:block;height:135px;border-radius:18px;overflow:hidden;background:var(--card2)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile .shade{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 25%,rgba(0,0,0,.88))}
+.tile .t{position:absolute;left:16px;right:16px;bottom:14px}
+.tile .n{font-size:20px;font-weight:900;letter-spacing:.2px;text-transform:uppercase;line-height:1.15}
+.tile .c{font-size:13px;color:rgba(255,255,255,.82)}
+.tile .ph{position:absolute;inset:0}.tile .t svg{font-size:17px;color:var(--accent)}
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:8px;padding:calc(6px + env(safe-area-inset-top)) 8px 6px;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.bar button{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--accent)}
+.bar h1{margin:0;font-size:17px;font-weight:700;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pcard{display:flex;gap:12px;padding:10px;min-height:108px;background:var(--card);border-radius:16px}
+.pcard .im{width:100px;height:88px;flex:none;border-radius:12px;overflow:hidden;background:var(--card2)}
+.pcard img{width:100%;height:100%;object-fit:cover;display:block}
+.pcard b{display:block;font-size:17px;font-weight:700;line-height:1.2}
+.pcard .st{font-size:13px;font-weight:500;color:var(--dim);margin-top:4px}
+.pcard .sd{font-size:12px;color:var(--faint);margin-top:4px}
+.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:30px;background:var(--card2)}
+img.broken{display:none}
+.cover{width:100%;height:260px;background:var(--card2);position:relative;overflow:hidden}
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.body{padding:24px;display:flex;flex-direction:column;gap:24px}
+.cat{font-size:12px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase}
+.h1{font-size:32px;font-weight:700;line-height:1.15;margin:8px 0 0}
+.sub{font-size:20px;color:rgba(255,255,255,.7);margin-top:10px}
+.box{background:var(--card2);border-radius:18px;padding:20px}
+.box h2{margin:0 0 12px;font-size:22px;font-weight:700;display:flex;gap:10px;align-items:center}
+.box h2 svg{color:var(--accent)}
+.box p{margin:0;line-height:1.65;color:rgba(255,255,255,.9);white-space:pre-line}
+.box ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.box li{display:flex;gap:12px;line-height:1.55;color:rgba(255,255,255,.9)}
+.box li:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;margin-top:.6em}
+.linkcard{display:flex;align-items:center;gap:14px;background:var(--card2);border-radius:18px;padding:20px}
+.linkcard>svg{font-size:24px;color:var(--accent)}
+.linkcard .tx{flex:1}.linkcard .tx b{display:block;font-size:17px}.linkcard .tx span{font-size:14px;color:rgba(255,255,255,.7)}
+.gal h3{margin:0 0 12px;font-size:20px;font-weight:600}
+.strip{display:flex;gap:14px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.strip figure{margin:0;width:225px;flex:none}
+.strip .gi{width:225px;height:155px;border-radius:12px;overflow:hidden;background:var(--card2);cursor:pointer}
+.strip img{width:100%;height:100%;object-fit:cover;display:block}
+.strip figcaption{font-size:14px;font-weight:500;margin-top:7px}
+.strip small{display:block;font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.arthd{padding:8px 16px 0}.arthd h1{margin:0;font-size:36px;font-weight:900}.arthd p{margin:6px 0 0;font-size:17px;font-weight:600;color:var(--dim)}
+.acard{position:relative;display:block;height:220px;border-radius:24px;overflow:hidden;background:var(--card2)}
+.acard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.acard .shade{position:absolute;inset:0;background:linear-gradient(to bottom,transparent,rgba(0,0,0,.25),rgba(0,0,0,.95))}
+.acard .t{position:absolute;left:22px;right:22px;bottom:20px}
+.acard .n{font-size:28px;font-weight:900;text-transform:uppercase;line-height:1.1}
+.acard .s{font-size:16px;font-weight:600;margin-top:6px;color:rgba(255,255,255,.9)}
+.acard .r{font-size:16px;font-weight:700;margin-top:8px;color:var(--accent)}
+.artcover{height:220px}
+.hr{height:1px;background:var(--line);margin:0}
+.day h2{margin:0;font-size:24px;font-weight:900;text-transform:uppercase}
+.day .f{font-size:12px;font-weight:800;letter-spacing:1.4px;color:rgba(255,255,255,.55);text-transform:uppercase;margin-top:5px}
+.slots{margin-top:14px;background:rgba(255,255,255,.055);border-radius:18px}
+.slot{display:flex;gap:14px;padding:15px;border-top:1px solid rgba(255,255,255,.08)}
+.slot:first-child{border-top:0}
+.slot .l{width:78px;flex:none;font-size:11px;font-weight:800;letter-spacing:.8px;color:rgba(255,255,255,.45);text-transform:uppercase;padding-top:3px}
+.slot .c{flex:1;font-size:16px;font-weight:500;color:rgba(255,255,255,.92)}.slot .c .tt{white-space:pre-line}
+.slot .o{display:block;margin-top:8px;font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase}
+.notes{background:rgba(255,255,255,.06);border-radius:18px;padding:16px}
+.notes h4{margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:1.4px;color:rgba(255,255,255,.58)}
+.notes p{margin:0 0 10px;font-size:15px;color:rgba(255,255,255,.78);white-space:pre-line}
+.empty{text-align:center;padding:36px 24px;color:var(--dim)}
+.empty h3{color:#fff;margin:12px 0 8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:12px;font-weight:700;font-size:15px;background:rgba(255,255,255,.14);color:#fff}
+.btn.pri{background:var(--accent);color:#000}
+.btn.green{background:#2fa84f}.btn.blue{background:#2f6fe0}.btn.orange{background:#e8871e}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>.btn{flex:1;min-width:90px}
+.banner{margin:0 16px 12px;padding:10px 14px;border-radius:12px;background:rgba(255,201,40,.12);color:var(--accent);font-size:13px}
+.menu{margin:8px 16px;background:var(--card);border-radius:16px;overflow:hidden}
+.menu a,.menu button{display:flex;align-items:center;gap:14px;width:100%;padding:14px 16px;text-align:left;border-top:1px solid var(--line)}
+.menu a:first-child,.menu button:first-child{border-top:0}
+.menu svg{font-size:22px;color:var(--accent);width:28px}
+.menu b{display:block;font-size:17px}.menu span{font-size:12px;color:var(--dim)}
+.sec{padding:20px 16px 0}.sec h2{margin:0 0 14px 4px;font-size:22px;font-weight:700;display:flex;gap:10px;align-items:center}.sec h2 svg{color:var(--accent)}
+.ccard{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.ccard h3{margin:0;font-size:20px}.ccard .d{color:var(--dim);font-size:14px;margin-top:4px}
+.ccard .jp{font-size:34px;font-weight:700;line-height:1.25;user-select:text}
+.ccard .ro{color:var(--dim);font-size:15px}
+.ccard .nt{border-top:1px solid var(--line);padding-top:12px;color:var(--dim);font-size:13px;white-space:pre-line}
+.hotel{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.hotel .im{height:200px;background:var(--card2)}.hotel img{width:100%;height:100%;object-fit:cover;display:block}
+.hotel .tx{padding:18px;display:flex;flex-direction:column;gap:14px}.hotel h3{margin:0;font-size:22px}.hotel p{margin:0;color:rgba(255,255,255,.8)}
+.note{font-size:13px;color:var(--dim);padding:0 20px}
+.link{color:var(--accent);font-size:14px;font-weight:600}
+.spin{width:28px;height:28px;border:3px solid rgba(255,255,255,.2);border-top-color:var(--accent);border-radius:50%;margin:30px auto;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#222;border:1px solid #444;padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:200;max-width:90vw}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+#viewer{position:fixed;inset:0;background:#000;z-index:100;display:none}
+#viewer.on{display:block}
+#viewer .sc{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+#viewer .sc::-webkit-scrollbar{display:none}
+#viewer .sl{flex:none;width:100vw;height:100%;scroll-snap-align:center;position:relative;overflow:hidden;touch-action:pan-x}
+#viewer .sl img{width:100%;height:100%;object-fit:contain;transform-origin:center;user-select:none;-webkit-user-drag:none}
+#viewer .cp{position:absolute;left:20px;right:20px;bottom:calc(36px + env(safe-area-inset-bottom));pointer-events:none;text-shadow:0 1px 4px #000}
+#viewer .cp b{display:block;font-size:15px;font-weight:500}#viewer .cp span{font-size:12px;opacity:.7}
+#viewer .x{position:absolute;top:calc(8px + env(safe-area-inset-top));right:10px;width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.5);font-size:22px;display:flex;align-items:center;justify-content:center;z-index:2}
+#viewer .ct{position:absolute;top:calc(20px + env(safe-area-inset-top));left:20px;font-size:13px;opacity:.7;z-index:2}
+pre.dbg{white-space:pre-wrap;font-size:12px;color:var(--dim);padding:0 16px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="viewer"></div>
+<div id="toast"></div>
+<script>
+'use strict';
+/* ===== CONFIG (same Google Sheets as the iOS app) ===== */
+const PLACES_SHEET='1YP0SGsrtJKieruo3iMK-fA-vMCF-pV9S1b7cGt-XJ1s';
+const ITIN_SHEET='1iTujOpcGZUxB9KHmBYd1sATAnebAunqSKSr5jZWc0Xs';
+const ART=[{"id": "noh", "title": "Noh Theatre", "subtitle": "Japan's oldest living theatrical tradition", "history": "Developed during the 14th century by Kan'ami and Zeami, Noh is Japan's oldest surviving theatrical art. Combining music, dance, poetry and symbolic movement, it has remained remarkably unchanged for over six centuries. Rather than realism, Noh expresses emotion through slow movement, silence and symbolism.", "experience": "During the workshop you will learn about the history of Noh, its stage, costumes and masks. Professional performers will demonstrate movements, posture and chanting while explaining how every gesture carries meaning.", "facts": ["More than 650 years old.", "Recognized by UNESCO as Intangible Cultural Heritage.", "Many performers belong to families that have practiced Noh for generations."], "image": "img/art_noh.jpg"}, {"id": "masks", "title": "Noh Masks", "subtitle": "The faces behind the performance", "history": "Every traditional Noh mask is carved by hand from Japanese cypress using techniques refined over centuries. Although a mask appears expressionless, subtle changes in lighting and the angle of the actor's head create dramatically different emotions.", "experience": "You will closely examine authentic masks and discover how different characters—women, old men, warriors, spirits and demons—are represented through delicate carving and painted details.", "facts": ["Masks are carved from Japanese cypress.", "Only the principal actor usually wears a mask.", "A single mask can appear happy or sad depending on its angle."], "image": "img/art_masks.jpg"}, {"id": "maiko", "title": "Maiko", "subtitle": "Kyoto's apprentice entertainers", "history": "A Maiko is an apprentice Geiko who spends years studying traditional dance, shamisen, etiquette and hospitality before becoming a fully qualified artist. Their elaborate hairstyles, seasonal kimono and distinctive makeup make them one of Kyoto's most recognizable cultural symbols.", "experience": "You will enjoy an authentic Maiko photoshoot while learning about her training, daily life and traditions. The experience offers a rare opportunity to ask respectful questions and observe Kyoto's living culture.", "facts": ["Training usually lasts around five years.", "Different kimono are worn according to the season.", "Maiko wear their own natural hair styled in traditional fashions."], "image": "img/art_maiko.jpg"}, {"id": "geiko", "title": "Geiko", "subtitle": "Kyoto's traditional performing artists", "history": "In Kyoto the word Geiko is used instead of Geisha. After completing years of training as a Maiko, a Geiko becomes a professional artist dedicated to preserving Kyoto's classical performing arts through dance, music, conversation and hospitality.", "experience": "You will gain insight into the life of a Geiko, her training and the traditions that continue to thrive in Kyoto today. This experience offers a rare opportunity to appreciate one of Japan's most refined cultural professions.", "facts": ["Kyoto uses the word Geiko instead of Geisha.", "Many begin training during their teenage years.", "Traditional arts remain their full-time profession."], "image": "img/art_geiko.jpg"}, {"id": "ochaya", "title": "Ochaya", "subtitle": "Kyoto's exclusive tea houses", "history": "An Ochaya is a traditional tea house where Geiko and Maiko entertain guests through music, dance and conversation. Historically these establishments operated by invitation only and remain among Kyoto's most exclusive cultural spaces.", "experience": "Your visit offers a glimpse into an environment that few visitors ever experience. Learn about etiquette, hospitality and the role these houses have played in Kyoto society for centuries.", "facts": ["Many Ochaya have existed for generations.", "Most are located in Kyoto's historic entertainment districts.", "Traditionally guests entered by invitation."], "image": "img/art_ochaya.jpg"}, {"id": "butoh", "title": "Butoh", "subtitle": "The dance of darkness", "history": "Butoh emerged in post-war Japan through Tatsumi Hijikata and Kazuo Ohno as a radical new form of performance. Rejecting traditional aesthetics, it embraces slow movement, silence and emotional exploration.", "experience": "During the workshop you will discover how movement expresses emotion without relying on conventional dance techniques. Every participant is encouraged to interpret movement personally rather than imitate choreography.", "facts": ["Founded after World War II.", "Every performance is unique.", "Slow movement is one of its defining characteristics."], "image": "img/art_butoh.jpg"}, {"id": "shinto", "title": "Shinto & Buddhism", "subtitle": "Understanding Japan's spiritual traditions", "history": "For centuries, Shinto and Buddhism have coexisted throughout Japan. Shinto focuses on nature, purity and the worship of kami (spirits), while Buddhism explores enlightenment, compassion and the cycle of life. Many temples and shrines stand side by side, reflecting this unique cultural harmony.", "experience": "Throughout Kyoto you will visit both Shinto shrines and Buddhist temples. Learning the differences between them helps you understand the rituals, architecture and traditions you encounter during the workshop.", "facts": ["Most Japanese people participate in both Shinto and Buddhist traditions.", "Shrines are generally Shinto while temples are Buddhist.", "Kyoto contains thousands of important religious sites."], "image": "img/art_shinto.jpg"}, {"id": "photo", "title": "Photography Etiquette", "subtitle": "Respect creates better photographs", "history": "Photography is about more than making beautiful images. In Japan, showing respect for people, traditions and sacred places is considered an essential part of being a good photographer. Courtesy often opens doors that equipment alone never can.", "experience": "During the workshop you will learn how to approach people respectfully, recognise situations where photography is inappropriate and understand the etiquette expected inside temples, shrines and traditional cultural spaces.", "facts": ["Respect often results in more authentic photographs.", "Many temples prohibit flash photography.", "Some ceremonies should be experienced without taking photographs."], "image": "img/art_photo.jpg"}, {"id": "benrido", "title": "Benrido & Collotype Printing", "subtitle": "A Kyoto tradition of photographic fine-art printing", "history": "Founded in Kyoto in 1887, Benrido opened its in-house collotype studio in 1905. Collotype is a photographic printing process known for its subtle tonal gradations and detailed reproduction. A photographic negative serves as the master for the printing plate, and high-purity oil-based ink is used to print the image onto Japanese paper. The process has been used to reproduce important works of Japanese cultural heritage.\n\nBenrido subsequently developed a practical form of colour collotype, expanding a technique originally used for monochrome printing.", "experience": "Benrido connects photography, printmaking and cultural preservation. Its work shows how a photograph can become a carefully produced physical print, and how photographic reproduction can help record and share artworks and historic objects across generations.\n\nBenrido's Collotype Gallery is located at 302 Benzaitencho, Nakagyo-ku, Kyoto.", "facts": ["Benrido was founded in Kyoto in 1887.", "Its collotype studio opened in 1905.", "Collotype is valued for fine tonal reproduction and durability.", "Benrido developed its own practical colour-collotype technique."], "image": "img/art_benrido.jpg", "videoTitle": "Watch the Benrido video", "videoURL": "https://youtu.be/xaIEDHHbVs8"}];
+const HOTELS=[
+ {name:'Gion Misen',desc:'Hotel in Gion; a convenient reference point for the workshop area.',img:'https://keigomoriyama-lgtm.github.io/kyoto-guide-images/77.jpg',map:'https://www.google.com/maps/place/Gion+Misen/data=!4m2!3m1!1s0x600108a02ce263f1:0x26ab0fbed5ef99e5',web:'https://www.gionmisen.kob-art.com/en'},
+ {name:'Gion Misen Furumonzen',desc:'Hotel in Gion; another convenient reference point for the workshop area.',img:'https://keigomoriyama-lgtm.github.io/kyoto-guide-images/78.jpg',map:'https://www.google.com/maps/place/Gion+Misen+Furumonzen/data=!4m2!3m1!1s0x600108ea36f93371:0x3478dce6443bd753',web:'https://www.gionmisen.kob-art.com/en'}
+];
+const CATS={'temples & shrines':'Temples & Shrines','nature & scenic':'Nature & Scenic','urban':'Urban Spots','urban spots':'Urban Spots','restaurants':'Restaurants','cafés':'Coffee & Tea','cafes':'Coffee & Tea','coffee & tea':'Coffee & Tea','photography':'Camera Shops','camera shops':'Camera Shops','art & galleries':'Art & Galleries','shopping':'Shopping','practical':'Laundry & Combini','laundry & combini':'Laundry & Combini','hotels':'Hotels','osaka':'Osaka'};
+const HOME_CATS=['Temples & Shrines','Nature & Scenic','Urban Spots','Restaurants','Coffee & Tea','Camera Shops','Laundry & Combini'];
+const CAT_ICON={'Temples & Shrines':'landmark','Nature & Scenic':'leaf','Urban Spots':'map','Restaurants':'utensils','Coffee & Tea':'coffee','Camera Shops':'camera','Art & Galleries':'camera','Shopping':'bag','Laundry & Combini':'tool','Hotels':'bed','Osaka':'landmark'};
+const GALLERY_CATS=['Temples & Shrines','Nature & Scenic'];
+const COVERS={
+ 'Temples & Shrines':['Kifune Shrine','Kifune Shrine - Okumiya [Rear Shrine]','Yasaka Shrine'],
+ 'Nature & Scenic':['Arashiyama','Maruyama Park','Kegonji (Suzumushidera) Temple'],
+ 'Urban Spots':['Gion & Hanamikoji','Gion','Poncho Alley'],
+ 'Restaurants':['Onikai','RIGOLETTO SMOKE GRILL & BAR','Kichi Kichi Omurice'],
+ 'Coffee & Tea':['flow by nozy coffee','Black Cat Coffee','Cafe Loto Kyoto'],
+ 'Camera Shops':['Torre del Sole','Kyoto International Conference Center (ICC Kyoto)'],
+ 'Art & Galleries':['y gion','Art Spot Korin','Shibunkaku'],
+ 'Shopping':['Kyoto Takashimaya Shopping Center','Kyoto Shinkyogoku Shopping Street','MUSASHI JAPAN 京都河原町駅前店'],
+ 'Laundry & Combini':['Royal Coin Laundry','FamilyMart - Keihan Sanjo','Matsumoto Kiyoshi Kyoto Shijo Kawaramachi'],
+ 'Hotels':['Gion Misen','Gion Misen Furumonzen'],
+ 'Osaka':['Maishima Incineration Plant','PL Tower (Great Peace Prayer Tower)']
+};
+
+/* ===== ICONS ===== */
+const IC={
+ more:'<circle cx="12" cy="12" r="1.5"/><circle cx="5" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>',
+ back:'<polyline points="15 18 9 12 15 6"/>',
+ out:'<line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>',
+ right:'<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>',
+ x:'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',
+ map:'<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>',
+ phone:'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
+ globe:'<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+ refresh:'<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>',
+ camera:'<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',
+ file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',
+ users:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+ speaker:'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>',
+ coffee:'<path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>',
+ tool:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+ leaf:'<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>',
+ landmark:'<line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/><line x1="2" y1="18" x2="22" y2="18"/>',
+ utensils:'<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>',
+ bed:'<path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>',
+ bag:'<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>',
+ cross:'<path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/>',
+ book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+ msg:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+ img:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>',
+ play:'<polygon points="5 3 19 12 5 21 5 3"/>',
+ info:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>',
+ bulb:'<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/>',
+ cal:'<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
+ dot:'<circle cx="12" cy="12" r="4"/>'
+};
+const ic=n=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${IC[n]||IC.dot}</svg>`;
+
+/* ===== HELPERS ===== */
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm=s=>String(s||'').toLowerCase().replace(/[^\p{L}\p{N}]/gu,'');
+const ls={
+ get(k){try{return JSON.parse(localStorage.getItem('kwg1:'+k))}catch(e){return null}},
+ set(k,v){try{localStorage.setItem('kwg1:'+k,JSON.stringify(v))}catch(e){}},
+ del(k){try{localStorage.removeItem('kwg1:'+k)}catch(e){}}
+};
+const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+const okUrl=s=>{s=(s||'').trim();if(!s)return '';try{new URL(s);return s}catch(e){return ''}};
+const titleCase=s=>String(s).toLowerCase().replace(/(^|[\s\-_/(\[])(\p{L})/gu,(m,a,b)=>a+b.toUpperCase());
+function imgSrc(u){ // Google Drive /view links -> thumbnail (same as iOS)
+ try{const x=new URL(u);if(/^(www\.)?drive\.google\.com$/.test(x.hostname)){
+  let id=null;const p=x.pathname.split('/').filter(Boolean);const i=p.indexOf('d');if(i>=0&&p[i+1])id=p[i+1];
+  if(!id)id=x.searchParams.get('id');
+  if(id)return 'https://drive.google.com/thumbnail?id='+encodeURIComponent(id)+'&sz=w1600';}}catch(e){}
+ return u;
+}
+function img(u,alt){
+ if(!u)return `<div class="ph">${ic('img')}</div>`;
+ return `<img loading="lazy" decoding="async" alt="${esc(alt||'')}" src="${esc(imgSrc(u))}" onerror="imgErr(this)">`;
+}
+function imgErr(el){
+ if(!el.dataset.r){el.dataset.r=1;setTimeout(()=>{el.src=el.src},1500);return}
+ el.classList.add('broken');if(el.parentNode)el.parentNode.classList.add('nophoto');
+}
+let toastT;
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),2600)}
+
+/* ===== CSV ===== */
+function parseCSV(text){
+ if(text.charCodeAt(0)===0xFEFF)text=text.slice(1);
+ const rows=[];let row=[],f='',q=false;
+ for(let i=0;i<text.length;i++){const c=text[i];
+  if(q){if(c==='"'){if(text[i+1]==='"'){f+='"';i++}else q=false}else f+=c}
+  else if(c==='"')q=true;
+  else if(c===','){row.push(f);f=''}
+  else if(c==='\n'){row.push(f);f='';rows.push(row);row=[]}
+  else if(c==='\r'){}
+  else f+=c;
+ }
+ if(f!==''||row.length){row.push(f);rows.push(row)}
+ return rows.map(r=>r.map(x=>x.replace(/\r\n?/g,'\n').trim()));
+}
+const key=s=>norm(s);
+
+/* ===== FETCH (live Google Sheet, then optional repo snapshot) ===== */
+const DIAG={};
+async function fetchCSV(sheet,tab,snap,extra){
+ const stamp=Date.now();
+ const u=`https://docs.google.com/spreadsheets/d/${sheet}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}${extra||''}&cacheBust=${stamp}`;
+ let err;
+ try{
+  const r=await fetch(u,{cache:'no-store'});
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  const t=await r.text();
+  if(/^\s*</.test(t))throw new Error('Not CSV (is the sheet public?)');
+  DIAG[tab]='live OK';return t;
+ }catch(e){err=e}
+ if(snap){
+  try{
+   const r=await fetch(`data/${snap}.csv?${stamp}`,{cache:'no-store'});
+   if(r.ok){const t=await r.text();if(t.trim()&&!/^\s*</.test(t)){DIAG[tab]='snapshot (live failed: '+err.message+')';return t}}
+  }catch(e){}
+ }
+ DIAG[tab]='FAILED: '+err.message;
+ throw err;
+}
+const friendly=e=>/HTTP 40[13]|public/.test(e.message||'')?'Google Sheets is not publicly readable. Set General access to Anyone with the link → Viewer.':(e&&e.message&&!/Failed to fetch|NetworkError|Load failed/i.test(e.message)?e.message:'Could not connect to Google Sheets. Check the internet connection.');
+
+/* ===== PARSERS (ported from the iOS app) ===== */
+function parsePlaces(text){
+ const m=parseCSV(text);
+ if(!m.length)throw new Error('The Places worksheet is empty.');
+ const hdr=m[0],col={};
+ hdr.forEach((t,i)=>{const k=key(t);if(k)col[k]=i});
+ if(col.name==null||col.category==null)throw new Error('The Places worksheet needs at least name and category columns.');
+ const v=(k,r)=>{const i=col[k];return i!=null&&i<r.length?r[i]:''};
+ // visibility: shown ONLY if show_in_app is explicitly true
+ const hl=hdr.map(h=>h.replace(/\uFEFF/g,'').trim().toLowerCase());
+ const idIdx=hl.findIndex(h=>h==='id'||h==='place_id');
+ const visIdx=hl.findIndex(h=>['show_in_app','is_visible','visible'].includes(h));
+ const canon=id=>{const t=String(id).trim(),n=Number(t);return(t!==''&&Number.isFinite(n)&&Math.round(n)===n)?String(n):t};
+ const hidden=new Set();
+ if(idIdx>=0&&visIdx>=0){
+  for(const r of m.slice(1)){
+   const raw=(r[idIdx]||'').trim(),flag=(r[visIdx]||'').trim().toLowerCase();
+   if(!raw||['true','1','yes','show','visible','on'].includes(flag))continue;
+   hidden.add(canon(raw));
+  }
+ }
+ const all=[];
+ m.slice(1).forEach((r,off)=>{
+  const name=v('name',r);if(!name)return;
+  const cat=CATS[v('category',r).trim().toLowerCase()];if(!cat)return;
+  const id0=v('id',r);
+  const so=v('sortorder',r);
+  const lat=parseFloat(v('latitude',r)),lng=parseFloat(v('longitude',r));
+  all.push({id:id0||`${cat}-${name}-${off}`,name,category:cat,subtitle:v('subtitle',r),short:v('shortdescription',r),history:v('history',r),
+   image:okUrl(v('imageurl',r)),map:okUrl(v('googlemapurl',r)),lat:isNaN(lat)?null:lat,lng:isNaN(lng)?null:lng,
+   sort:/^-?\d+$/.test(so)?parseInt(so,10):off,pdfTitle:v('pdftitle',r),pdfURL:okUrl(v('pdfurl',r))});
+ });
+ if(!all.length)throw new Error('No valid places were found. Check the category values in the Places worksheet.');
+ return all.filter(p=>!hidden.has(canon(p.id)));
+}
+function normId(x){x=String(x||'').trim().toLowerCase();const n=Number(x);return(x!==''&&Number.isFinite(n)&&Math.round(n)===n)?String(Math.round(n)):x}
+function parsePhotos(text){
+ const rows=parseCSV(text);if(!rows.length)return [];
+ const col={target_type:0,target_id:1,photographer:2,image_url:3,caption:4,sort_order:5};
+ let data=rows;
+ const h=rows.slice(0,3).findIndex(r=>r.map(x=>x.replace(/\uFEFF/g,'').trim().toLowerCase()).includes('target_type'));
+ if(h>=0){rows[h].map(x=>x.replace(/\uFEFF/g,'').trim().toLowerCase()).forEach((n,i)=>{if(col[n]!=null)col[n]=i});data=rows.slice(h+1)}
+ const out=[];
+ for(const r of data){
+  const g=k=>(r[col[k]]||'').trim();
+  const type=g('target_type').toLowerCase();let tid=g('target_id');
+  const n=Number(tid);if(tid!==''&&Number.isFinite(n)&&Math.round(n)===n)tid=String(Math.round(n));
+  const url=g('image_url');
+  if(!['place','art'].includes(type)||!tid||!/^https?:\/\/[^/]+/i.test(url))continue;
+  out.push({type,tid,by:g('photographer'),url,cap:g('caption'),sort:Math.trunc(parseFloat(g('sort_order'))||0)});
+ }
+ return out;
+}
+function photosFor(type,id){
+ const i=normId(id);
+ return S.photos.filter(p=>p.type===type&&p.tid.toLowerCase()===i)
+  .sort((a,b)=>a.sort-b.sort||(a.url+a.tid).localeCompare(b.url+b.tid));
+}
+const dayRx=/^(MO|TU|WE|TH|FR|SA|SU)\s*-\s*\d{1,2}\/\d{1,2}$/;
+const MONTHS=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+function looksLikeDay(v){const u=String(v||'').toUpperCase().trim();return MONTHS.some(m=>u.includes(m))||dayRx.test(u)}
+function parseSchedule(text){
+ const mx=parseCSV(text);
+ if(!mx.length)throw new Error('Google returned an empty first tab.');
+ let hi=-1;
+ for(let i=0;i<Math.min(40,mx.length);i++){if(mx[i].filter(looksLikeDay).length>=2){hi=i;break}}
+ if(hi<0)throw new Error('Could not find the day/date row in the first tab.');
+ const header=mx[hi];
+ const cols=header.map((_,i)=>i).filter(i=>looksLikeDay(header[i]));
+ if(cols.length<2)throw new Error('Could not identify the itinerary day columns.');
+ const focus={},slots={};const notes=[];let inNotes=false;
+ const val=(r,c)=>c<r.length?r[c]:'';
+ for(let ri=hi+1;ri<mx.length;ri++){
+  const row=mx[ri];
+  const label=(row.find(x=>x!=='')||'').trim();
+  const nl=norm(label);
+  if(nl==='additionalnotes'){inNotes=true;continue}
+  if(inNotes){const n=row.find(x=>x!=='')||'';if(n&&!notes.includes(n))notes.push(n);continue}
+  if(nl==='workshopfocus'){for(const c of cols){const t=val(row,c);if(t)focus[c]=t}continue}
+  if(!label||label.startsWith('*'))continue;
+  for(const c of cols){const t=val(row,c);if(!t)continue;(slots[c]=slots[c]||[]).push({label,content:t,order:ri})}
+ }
+ const days=cols.map(c=>({title:header[c],focus:focus[c]||'',slots:slots[c]||[]}));
+ return {days,notes};
+}
+function sheetHeaderRow(m,a,b){return m.findIndex(r=>{const k=r.map(key);return k.includes(a)&&k.includes(b)})}
+function parseStaff(text){
+ const m=parseCSV(text);
+ let col={name:0,role:1,phone:2,whatsapp:3,websiteurl:4,sortorder:5},data=m;
+ const h=sheetHeaderRow(m,'name','role');
+ if(h>=0){col={};m[h].forEach((t,i)=>{const k=key(t);if(k)col[k]=i});if(col.websiteurl==null&&col.website!=null)col.websiteurl=col.website;data=m.slice(h+1)}
+ const v=(r,k)=>{const i=col[k];return i!=null&&i<r.length?r[i].trim():''};
+ const dg=s=>s.replace(/\D/g,'');
+ const items=[];
+ data.forEach((r,idx)=>{
+  const name=v(r,'name');if(!name||key(name)==='name')return;
+  const ph=dg(v(r,'phone'));let wa=dg(v(r,'whatsapp'));if(!wa)wa=ph;
+  const o=parseFloat(v(r,'sortorder'));
+  items.push({o:isNaN(o)?idx:Math.trunc(o),name,role:v(r,'role'),phone:ph?'+'+ph:'',wa,web:okUrl(v(r,'websiteurl'))});
+ });
+ return items.sort((a,b)=>a.o-b.o);
+}
+function parseDocs(text){
+ const m=parseCSV(text);
+ let col={title:0,subtitle:1,url:2,note:3,icon:4,sortorder:5},data=m;
+ const h=sheetHeaderRow(m,'title','url');
+ if(h>=0){col={};m[h].forEach((t,i)=>{const k=key(t);if(k)col[k]=i});data=m.slice(h+1)}
+ const v=(r,k)=>{const i=col[k];return i!=null&&i<r.length?r[i].trim():''};
+ const items=[];
+ data.forEach((r,idx)=>{
+  const title=v(r,'title');if(!title||key(title)==='title')return;
+  const url=v(r,'url');if(!/^https?:\/\//i.test(url))return;
+  const o=parseFloat(v(r,'sortorder'));
+  items.push({o:isNaN(o)?idx:Math.trunc(o),title,subtitle:v(r,'subtitle'),url,note:v(r,'note'),icon:v(r,'icon')});
+ });
+ return items.sort((a,b)=>a.o-b.o);
+}
+function parseSimple(text,need,label){
+ const m=parseCSV(text);
+ if(!m.length)throw new Error('The '+label+' worksheet is empty.');
+ const col={};m[0].forEach((t,i)=>{col[key(t)]=i});
+ for(const n of need)if(col[n]==null)throw new Error('The '+label+' worksheet requires '+need.join(', ')+' columns.');
+ const v=(r,k)=>{const i=col[k];return i!=null&&i<r.length?r[i]:''};
+ return {m,v};
+}
+function parseEmergency(text){
+ const {m,v}=parseSimple(text,['category','title'],'Emergency');
+ return m.slice(1).filter(r=>v(r,'title')).map(r=>({category:v(r,'category'),title:v(r,'title'),subtitle:v(r,'subtitle'),phone:v(r,'phone'),maps:v(r,'maps'),website:v(r,'website')}));
+}
+function parseJapanese(text){
+ const {m,v}=parseSimple(text,['category','english','japanese'],'Japanese');
+ return m.slice(1).filter(r=>v(r,'english')).map(r=>({category:v(r,'category'),english:v(r,'english'),japanese:v(r,'japanese'),romaji:v(r,'romaji'),notes:v(r,'notes')}));
+}
+
+/* ===== STATE ===== */
+const sc=ls.get('sched')||{};
+const S={
+ places:ls.get('places')||[],photos:ls.get('photos')||[],days:sc.days||[],notes:sc.notes||[],
+ placesErr:'',schedErr:'',placesLoading:false,
+ staff:ls.get('staff')||[],docs:ls.get('docs')||[],emerg:ls.get('emerg')||[],jp:ls.get('jp')||[],
+ done:{},busy:{}
+};
+const placeById=id=>S.places.find(p=>String(p.id)===String(id));
+function placesIn(cat){return S.places.filter(p=>p.category===cat).sort((a,b)=>a.sort-b.sort||a.name.localeCompare(b.name,undefined,{sensitivity:'base'}))}
+function homeCats(){return HOME_CATS.filter(c=>S.places.some(p=>p.category===c))}
+function coverFor(cat){
+ const list=placesIn(cat);
+ const bad=p=>{const n=norm(p.name);return cat==='Camera Shops'&&(n.includes('arashiyama')||n.includes('bambooforest'))};
+ for(const pref of COVERS[cat]||[]){
+  const t=norm(pref);if(!t)continue;
+  const p=list.find(x=>norm(x.name)===t)||list.find(x=>{const n=norm(x.name);return n.includes(t)||t.includes(n)});
+  if(!p||!p.image)continue;
+  if(bad(p))continue;
+  return p.image;
+ }
+ const f=list.filter(p=>!bad(p)&&p.image)[0];
+ return f?f.image:'';
+}
+const ALIASES={nanzenjitemple:['nanzenji'],heianjingushrineandgardens:['santuarioheian'],otaginenbusujitemple:['otaginenbutsuji'],otaginenbutsujitemple:['otaginenbutsuji'],bambooforest:['arashiyama'],adashinonenbutsujitemple:['adashinonenbutsujitemple'],yasakashrine:['yasakashrine']};
+function placesMatching(text){
+ const nt=norm(text);if(!nt)return [];
+ const matches=[];
+ for(const p of S.places){
+  const canonical=norm(p.name);if(!canonical)continue;
+  let best=null;
+  const consider=c=>{if(!c)return;const pos=nt.indexOf(c);if(pos<0)return;
+   if(!best||c.length>best.len||(c.length===best.len&&pos<best.pos))best={pos,len:c.length}};
+  consider(canonical);
+  ['temple','shrine','gardens','garden'].map(w=>canonical.split(w).join('')).filter(x=>x.length>=5).forEach(consider);
+  for(const sn of Object.keys(ALIASES)){
+   if(nt.includes(sn)){for(const g of ALIASES[sn]){if(g===canonical){const pos=nt.indexOf(sn);if(!best||sn.length>best.len)best={pos,len:sn.length}}}}
+  }
+  if(best)matches.push({p,pos:best.pos,len:best.len});
+ }
+ matches.sort((a,b)=>a.pos-b.pos||b.len-a.len);
+ const sel=[];
+ for(const m of matches){
+  const ov=sel.some(e=>Math.max(e.pos,m.pos)<Math.min(e.pos+e.len,m.pos+m.len));
+  if(!ov)sel.push(m);
+ }
+ const seen=new Set();
+ return sel.map(m=>m.p).filter(p=>!seen.has(p.id)&&seen.add(p.id));
+}
+
+/* ===== REFRESH ===== */
+async function refreshPlaces(){
+ if(S.busy.places)return false;S.busy.places=true;S.placesLoading=true;
+ let changed=false;const prevErr=S.placesErr;
+ try{
+  const p=parsePlaces(await fetchCSV(PLACES_SHEET,'places_rows','places_rows'));
+  changed=!same(p,S.places);S.places=p;ls.set('places',p);S.placesErr='';
+ }catch(e){S.placesErr=S.places.length?'Couldn’t update the guide. Showing the saved version.':friendly(e)}
+ S.busy.places=false;S.placesLoading=false;S.done.places=true;
+ return changed||prevErr!==S.placesErr||!S.places.length;
+}
+async function refreshSchedule(){
+ if(S.busy.sched)return false;S.busy.sched=true;
+ let changed=false;const prevErr=S.schedErr;
+ try{
+  let parsed;
+  try{parsed=parseSchedule(await fetchCSV(ITIN_SHEET,'Itinerary','itinerary'))}
+  catch(e1){parsed=parseSchedule(await fetchCSV(ITIN_SHEET,'Itinerary','itinerary','&headers=0'))}
+  if(!parsed.days.length)throw new Error('The Google Sheet loaded, but no itinerary days were found in its first tab.');
+  changed=!same(parsed,{days:S.days,notes:S.notes});
+  S.days=parsed.days;S.notes=parsed.notes;ls.set('sched',parsed);S.schedErr='';
+ }catch(e){S.schedErr=S.days.length?'Using the last saved workshop schedule.':friendly(e)}
+ S.busy.sched=false;S.done.sched=true;
+ return true;
+}
+async function refreshPhotos(){
+ if(S.busy.photos)return false;S.busy.photos=true;
+ let changed=false;
+ try{
+  const [a,b]=await Promise.allSettled([fetchCSV(PLACES_SHEET,'Guide Photos','guide_photos'),fetchCSV(PLACES_SHEET,'Art Photos','art_photos')]);
+  const merged=[];const seen=new Set();let ok=false;
+  for(const r of [a,b]){if(r.status!=='fulfilled')continue;ok=true;
+   for(const p of parsePhotos(r.value)){const k=p.type+'-'+p.tid+'-'+p.sort+'-'+p.url;if(!seen.has(k)){seen.add(k);merged.push(p)}}}
+  if(ok&&merged.length){changed=!same(merged,S.photos);S.photos=merged;ls.set('photos',merged)}
+ }catch(e){}
+ S.busy.photos=false;return changed;
+}
+// Staff / Documents / Emergency / Japanese: fetched when the screen opens.
+// A failed fetch keeps the saved copy; an EMPTY successful fetch clears it.
+const LISTS={
+ staff:{sheet:PLACES_SHEET,tab:'Staff',parse:parseStaff,key:'staff'},
+ docs:{sheet:PLACES_SHEET,tab:'PDFs',parse:parseDocs,key:'docs'},
+ emerg:{sheet:PLACES_SHEET,tab:'Emergency',parse:parseEmergency,key:'emerg',snap:'emergency'},
+ jp:{sheet:PLACES_SHEET,tab:'Japanese',parse:parseJapanese,key:'jp',snap:'japanese'}
+};
+async function refreshList(name){
+ const L=LISTS[name];if(S.busy[name])return false;S.busy[name]=true;
+ let changed=false;
+ try{
+  const v=L.parse(await fetchCSV(L.sheet,L.tab,L.snap));
+  changed=!same(v,S[name]);S[name]=v;
+  if(v.length)ls.set(L.key,v);else ls.del(L.key);
+ }catch(e){}
+ S.busy[name]=false;S.done[name]=true;
+ return changed||true; // also redraws the "loading" state
+}
+let lastRefresh=0;
+async function refreshAll(manual){
+ lastRefresh=Date.now();
+ const r=await Promise.all([refreshPlaces(),refreshSchedule(),refreshPhotos()]);
+ if(r.some(Boolean))render(true);
+ if(manual){const bad=S.placesErr||S.schedErr;toast(bad?'Couldn’t update. Showing saved data.':'Guide updated')}
+}
+
+/* ===== VIEWS ===== */
+function tabBar(cur){
+ const t=[['loc','LOCATIONS'],['arts','ARTS'],['sched','SCHEDULE']];
+ return `<nav class="tabs">${t.map(([k,l])=>`<a href="#/${k}" data-tab class="${cur===k?'on':''}">${l}</a>`).join('')}</nav>`;
+}
+function homeShell(tab,inner){
+ return `<header class="hero"><img src="img/header.jpg" alt=""><div class="shade"></div>
+ <div class="ttl"><div class="k">KYOTO</div><div class="w">WORKSHOP</div><div class="s">A photographic field guide</div></div>
+ <a class="menu-btn" href="#/menu" aria-label="Menu">${ic('more')}</a></header>${tabBar(tab)}${inner}`;
+}
+function topBar(title){return `<div class="bar"><button onclick="goBack()" aria-label="Back">${ic('back')}</button><h1>${esc(title||'')}</h1></div>`}
+function emptyBlock(msg,retry){return `<div class="empty">${ic('cal')}<h3>${esc(msg[0])}</h3><p>${esc(msg[1]||'')}</p>${retry?`<button class="btn" onclick="manualRefresh()">${ic('refresh')} Refresh</button>`:''}</div>`}
+
+function vLoc(){
+ let inner;
+ if(!S.places.length){
+  inner=!S.done.places?`<div class="spin"></div>`:S.placesErr?emptyBlock(['Guide unavailable',S.placesErr],true):emptyBlock(['No places to show','The guide has no visible places right now.'],true);
+ }else{
+  inner=(S.placesErr?`<div class="banner">${esc(S.placesErr)}</div>`:'')+
+  `<div class="pad stack">${homeCats().map(c=>`<a class="tile" href="#/cat/${encodeURIComponent(c)}">${img(coverFor(c),'')}<div class="shade"></div>
+   <div class="t">${ic(CAT_ICON[c])}<div class="n">${esc(c)}</div><div class="c">${placesIn(c).length} places</div></div></a>`).join('')}</div>`;
+ }
+ return {html:homeShell('loc',inner)};
+}
+function vCat(cat){
+ const list=placesIn(cat);
+ return {parent:'#/loc',html:topBar(cat)+`<div class="pad stack" style="padding-top:12px">${list.map(p=>`<a class="pcard" href="#/place/${encodeURIComponent(p.id)}">
+  <div class="im">${img(p.image,p.name)}</div><div style="flex:1;min-width:0"><b class="clamp2">${esc(p.name)}</b>
+  ${p.subtitle?`<div class="st clamp2">${esc(p.subtitle)}</div>`:''}${p.short?`<div class="sd clamp2">${esc(p.short)}</div>`:''}</div></a>`).join('')||emptyBlock(['No places',''])}</div>`};
+}
+function gallery(type,id){
+ const ph=photosFor(type,id);if(!ph.length)return '';
+ return `<section class="gal"><h3>Workshop Photos</h3><div class="strip">${ph.map((p,i)=>`<figure data-g="${esc(type)}|${esc(id)}" data-i="${i}">
+  <div class="gi">${img(p.url,p.cap)}</div>${p.cap?`<figcaption class="clamp2">${esc(p.cap)}</figcaption>`:''}${p.by?`<small>${esc(p.by)}</small>`:''}</figure>`).join('')}</div></section>`;
+}
+function linkCard(href,icon,title,sub){
+ return `<a class="linkcard" href="${esc(href)}" target="_blank" rel="noopener">${ic(icon)}<div class="tx"><b>${esc(title)}</b><span>${esc(sub)}</span></div>${ic('out')}</a>`;
+}
+function box(title,icon,text){return `<div class="box"><h2>${ic(icon)}${esc(title)}</h2><p>${esc(text)}</p></div>`}
+function vPlace(id){
+ const p=placeById(id);
+ if(!p)return {parent:'#/loc',html:topBar('')+emptyBlock(['Place not found','It may have been removed from the guide.'])};
+ const mapURL=p.map||(p.lat!=null&&p.lng!=null?`https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`:`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name+' Kyoto Japan')}`);
+ return {parent:'#/cat/'+encodeURIComponent(p.category),html:topBar('')+`<div class="cover">${img(p.image,p.name)}</div><div class="body">
+  <div><div class="cat">${esc(p.category)}</div><h1 class="h1">${esc(p.name)}</h1>${p.subtitle.trim()?`<div class="sub">${esc(p.subtitle)}</div>`:''}</div>
+  ${p.short.trim()?box('About This Place','info',p.short):''}
+  ${p.history.trim()?box('History & Cultural Background','book',p.history):''}
+  ${GALLERY_CATS.includes(p.category)?gallery('place',p.id):''}
+  ${p.pdfURL?linkCard(p.pdfURL,'file',p.pdfTitle?titleCase(p.pdfTitle):'Open PDF','PDF document'):''}
+  ${linkCard(mapURL,'map','Open in Google Maps','Directions and location')}</div>`};
+}
+function artList(){
+ const main=ART.filter(a=>!['ochaya','shinto','photo'].includes(a.id));
+ const fin=['shinto','photo'].map(i=>ART.find(a=>a.id===i)).filter(Boolean);
+ return main.concat(fin);
+}
+function vArts(){
+ return {html:homeShell('arts',`<div class="arthd"><h1>ARTS</h1><p>Learn before experiencing Kyoto</p></div>
+ <div class="pad stack" style="padding-top:22px">${artList().map(a=>`<a class="acard" href="#/art/${a.id}"><img src="${a.image}" alt=""><div class="shade"></div>
+ <div class="t"><div class="n">${esc(a.title)}</div><div class="s">${esc(a.subtitle)}</div><div class="r">Read ${ic('right')}</div></div></a>`).join('')}</div>`)};
+}
+function vArt(id){
+ const a=ART.find(x=>x.id===id);
+ if(!a)return {parent:'#/arts',html:topBar('')+emptyBlock(['Article not found',''])};
+ return {parent:'#/arts',html:topBar('')+`<div class="cover artcover"><img src="${a.image}" alt=""></div><div class="body">
+ <div><h1 class="h1" style="font-size:34px;margin:0">${esc(a.title)}</h1><div class="sub" style="font-size:20px;color:#999">${esc(a.subtitle)}</div></div><div class="hr"></div>
+ ${box('History','book',a.history)}${box('What You’ll Experience','info',a.experience)}
+ <div class="box"><h2>${ic('bulb')}Interesting Facts</h2><ul>${a.facts.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></div>
+ ${a.videoURL?linkCard(a.videoURL,'play',a.videoTitle||'Watch the video','Opens on YouTube'):''}
+ ${['shinto','photo'].includes(a.id)?'':gallery('art',a.id)}</div>`};
+}
+function vSched(){
+ let inner;
+ if(!S.days.length&&!S.done.sched){inner=`<div class="spin"></div>`}
+ else if(!S.days.length){
+  inner=`<div class="empty">${ic('cal')}<h3>Schedule unavailable</h3><p>${esc(S.schedErr||'The workshop schedule could not be loaded from Google Sheets.')}</p>
+  <div class="row" style="justify-content:center"><button class="btn" onclick="manualRefresh()">${ic('refresh')} Refresh</button>
+  <a class="btn" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/${ITIN_SHEET}/edit">Open Google Sheet</a></div></div>`;
+ }else{
+  inner=(S.schedErr?`<div class="banner">${esc(S.schedErr)}</div>`:'')+`<div class="pad stack" style="gap:28px">${S.days.map(d=>`<div class="day"><h2>${esc(d.title.replace(' - ',' · '))}</h2>${d.focus?`<div class="f">${esc(d.focus)}</div>`:''}
+  <div class="slots">${d.slots.map(s=>`<div class="slot"><div class="l">${esc(s.label)}</div><div class="c"><span class="tt">${esc(s.content)}</span>${placesMatching(s.content).map(p=>`<a class="o" href="#/place/${encodeURIComponent(p.id)}">Open ${esc(p.name)} guide ↗</a>`).join('')}</div></div>`).join('')}</div></div>`).join('')}
+  ${S.notes.length?`<div class="notes"><h4>WORKSHOP NOTES</h4>${S.notes.map(n=>`<p>${esc(n)}</p>`).join('')}</div>`:''}</div>`;
+ }
+ return {html:homeShell('sched',inner)};
+}
+
+/* --- menu --- */
+function vMenu(){
+ const rows=[['emergency','cross','Emergency','Emergency contacts and services'],['japanese','book','Useful Japanese','Useful phrases'],['hotels','bed','Hotel Information','Gion Misen and Gion Misen Furumonzen'],['docs','file','Documents','Guides and workshop links'],['staff','users','Workshop Staff','Instructors and administrative support']];
+ return {parent:'#/loc',html:topBar('Menu')+`<div class="menu">${rows.map(r=>`<a href="#/menu/${r[0]}">${ic(r[1])}<div><b>${r[2]}</b><span>${r[3]}</span></div></a>`).join('')}</div>
+ <div class="menu"><button onclick="manualRefresh(true)">${ic('refresh')}<div><b>Refresh Data</b></div></button></div>`};
+}
+const catIcon=c=>({emergency:'cross',hospital:'cross',hotel:'bed',embassy:'landmark',transport:'map',pharmacy:'cross'}[c.toLowerCase()]||'dot');
+function sortedCats(arr){return [...new Set(arr.map(x=>x.category))].sort()}
+function loadingOr(arr,name,msg){
+ if(arr.length)return '';
+ return S.busy[name]||!S.done[name]?'<div class="spin"></div>':`<p class="note" style="padding-top:24px">${msg}</p>`;
+}
+function vEmergency(){
+ const list=S.emerg.filter(c=>!['organizer','workshop staff','workshop info'].includes(c.category.trim().toLowerCase()));
+ const cats=sortedCats(list);
+ return {parent:'#/menu',html:topBar('Emergency')+loadingOr(list,'emerg','Emergency contacts are not available right now.')+cats.map(cat=>`<div class="sec"><h2>${ic(catIcon(cat))}${esc(cat)}</h2><div class="stack">${list.filter(c=>c.category.toLowerCase()===cat.toLowerCase()).map(c=>`<div class="ccard"><div><h3>${esc(c.title)}</h3>${c.subtitle?`<div class="d">${esc(c.subtitle)}</div>`:''}</div>
+ <div class="row">${c.phone.trim()?`<a class="btn green" href="tel:${esc(c.phone.replace(/\s+/g,''))}">${ic('phone')} Call</a>`:''}${c.maps.trim()?`<a class="btn blue" target="_blank" rel="noopener" href="${esc(c.maps)}">${ic('map')} Map</a>`:''}${c.website.trim()?`<a class="btn orange" target="_blank" rel="noopener" href="${esc(c.website)}">${ic('globe')} Website</a>`:''}</div></div>`).join('')}</div></div>`).join('')+'<div style="height:28px"></div>'};
+}
+function vJapanese(){
+ const cats=sortedCats(S.jp);
+ return {parent:'#/menu',html:topBar('Useful Japanese')+loadingOr(S.jp,'jp','Phrases are not available right now.')+cats.map(cat=>`<div class="sec"><h2>${ic('book')}${esc(cat)}</h2><div class="stack">${S.jp.filter(p=>p.category.toLowerCase()===cat.toLowerCase()).map(p=>`<div class="ccard"><h3 style="font-size:17px">${esc(p.english)}</h3><div class="jp" lang="ja">${esc(p.japanese)}</div>${p.romaji?`<div class="ro">${esc(p.romaji)}</div>`:''}${p.notes.trim()?`<div class="nt">${esc(p.notes)}</div>`:''}
+ <button class="btn pri" data-say="${esc(p.japanese)}">${ic('speaker')} Speak</button></div>`).join('')}</div></div>`).join('')+'<div style="height:28px"></div>'};
+}
+function vHotels(){
+ return {parent:'#/menu',html:topBar('Hotel Information')+`<div class="sec"><h2 style="font-size:28px;font-weight:900">HOTEL INFORMATION</h2></div><p class="note">Accommodation references for the workshop area.</p>
+ <div class="pad stack" style="padding-top:16px">${HOTELS.map(h=>`<div class="hotel"><div class="im">${img(h.img,h.name)}</div><div class="tx"><h3>${esc(h.name)}</h3><p>${esc(h.desc)}</p>
+ <div class="row"><a class="btn blue" target="_blank" rel="noopener" href="${esc(h.map)}">${ic('map')} Map</a><a class="btn orange" target="_blank" rel="noopener" href="${esc(h.web)}">${ic('globe')} Website</a></div></div></div>`).join('')}</div>`};
+}
+function docIcon(n){n=(n||'').toLowerCase();return n.includes('globe')||n.includes('link')?'globe':n.includes('video')||n.includes('play')?'play':'file'}
+function vDocs(){
+ return {parent:'#/menu',html:topBar('Documents')+loadingOr(S.docs,'docs','No documents available right now.')+`<div class="pad stack" style="padding-top:12px">${S.docs.map(d=>`<div class="menu" style="margin:0"><a href="${esc(d.url)}" target="_blank" rel="noopener">${ic(docIcon(d.icon))}<div style="flex:1"><b>${esc(d.title)}</b>${d.subtitle?`<span>${esc(d.subtitle)}</span>`:''}</div>${ic('out')}</a>
+ ${d.note?`<div style="padding:4px 16px 14px;font-size:14px;user-select:text;border-top:0">${esc(d.note)}</div>`:''}</div>`).join('')}</div>`};
+}
+function vStaff(){
+ const roles=[...new Set(S.staff.map(m=>m.role))];
+ return {parent:'#/menu',html:topBar('Workshop Staff')+loadingOr(S.staff,'staff','Contact details are not available right now.')+roles.map(r=>`<div class="sec"><h2 style="font-size:15px;color:var(--dim)">${esc(r)}</h2><div class="stack">${S.staff.filter(m=>m.role===r).map(m=>`<div class="ccard"><h3>${esc(m.name)}</h3>
+ <div class="row">${m.phone?`<a class="btn green" href="tel:${esc(m.phone)}">${ic('phone')} Call</a>`:''}${m.wa?`<a class="btn green" target="_blank" rel="noopener" href="https://wa.me/${esc(m.wa)}">${ic('msg')} WhatsApp</a>`:''}</div>
+ ${m.web?`<a class="link" target="_blank" rel="noopener" href="${esc(m.web)}">${ic('globe')} Website</a>`:''}</div>`).join('')}</div></div>`).join('')+(S.staff.length?`<p class="note" style="padding:16px 20px 28px">WhatsApp opens a chat with the staff member. You can start a voice call from within WhatsApp.</p>`:'')};
+}
+function vDebug(){
+ return {parent:'#/menu',html:topBar('Diagnostics')+`<pre class="dbg">${esc(Object.entries(DIAG).map(([k,v])=>k+': '+v).join('\n')||'(nothing loaded yet)')}\n\nplaces: ${S.places.length}\nphotos: ${S.photos.length}\nschedule days: ${S.days.length}</pre>`};
+}
+
+/* ===== ROUTER ===== */
+let cur='',trail=[],replacing=false;const scrollPos={};
+function route(){
+ const parts=(location.hash.replace(/^#\/?/,'')||'loc').split('/').filter(Boolean).map(decodeURIComponent);
+ const [a,b]=parts;
+ switch(a){
+  case 'arts':return vArts();
+  case 'sched':return vSched();
+  case 'cat':return vCat(b);
+  case 'place':return vPlace(b);
+  case 'art':return vArt(b);
+  case 'debug':return vDebug();
+  case 'menu':
+   switch(b){
+    case 'emergency':return vEmergency();
+    case 'japanese':return vJapanese();
+    case 'hotels':return vHotels();
+    case 'docs':return vDocs();
+    case 'staff':return vStaff();
+    default:return vMenu();
+   }
+  default:return vLoc();
+ }
+}
+let parentHash='#/loc';
+function render(keep){
+ const y=window.scrollY;
+ const r=route();parentHash=r.parent||'#/loc';
+ document.getElementById('app').innerHTML=r.html;
+ window.scrollTo(0,keep?y:(scrollPos[location.hash||'#/loc']||0));
+}
+function enter(){ // once per navigation: load the lists a screen needs
+ const p=(location.hash.replace(/^#\/?/,'')||'loc').split('/');
+ if(p[0]!=='menu')return;
+ const name={emergency:'emerg',japanese:'jp',docs:'docs',staff:'staff'}[p[1]];
+ if(!name||S.busy[name])return;
+ const h=location.hash;
+ refreshList(name).then(()=>{if(location.hash===h)render(true)});
+}
+window.addEventListener('hashchange',()=>{
+ const h=location.hash||'#/loc';
+ if(replacing){trail[trail.length-1]=h;replacing=false}
+ else if(trail.length>1&&trail[trail.length-2]===h)trail.pop();
+ else trail.push(h);
+ cur=h;enter();render(false);
+});
+window.addEventListener('scroll',()=>{scrollPos[cur||location.hash||'#/loc']=window.scrollY},{passive:true});
+function goBack(){if(trail.length>1)history.back();else{replacing=true;location.replace(parentHash)}}
+function manualRefresh(fromMenu){refreshAll(true);if(fromMenu&&trail.length>1)history.back()}
+document.addEventListener('click',e=>{
+ const t=e.target.closest('a[data-tab]');
+ if(t){e.preventDefault();if(location.hash!==t.getAttribute('href')){replacing=true;location.replace(t.getAttribute('href'))}return}
+ const g=e.target.closest('[data-g]');
+ if(g){const [type,id]=g.dataset.g.split('|');openViewer(photosFor(type,id),+g.dataset.i);return}
+ const s=e.target.closest('[data-say]');
+ if(s){speak(s.dataset.say);return}
+});
+function speak(text){
+ if(!('speechSynthesis' in window)){toast('Speech is not supported on this device');return}
+ const v=speechSynthesis.getVoices();
+ if(v.length&&!v.some(x=>/^ja/i.test(x.lang))){toast('No Japanese voice installed on this device');return}
+ speechSynthesis.cancel();
+ const u=new SpeechSynthesisUtterance(text);u.lang='ja-JP';u.rate=.85;speechSynthesis.speak(u);
+}
+
+/* ===== FULLSCREEN PHOTO VIEWER (swipe, pinch zoom, double-tap) ===== */
+let viewerOpen=false;
+function openViewer(photos,start){
+ if(!photos.length)return;
+ const v=document.getElementById('viewer');
+ v.innerHTML=`<button class="x" aria-label="Close">${ic('x')}</button>${photos.length>1?`<div class="ct"></div>`:''}<div class="sc">${photos.map(p=>`<div class="sl"><img alt="" src="${esc(imgSrc(p.url))}" draggable="false">
+ ${p.cap||p.by?`<div class="cp">${p.cap?`<b>${esc(p.cap)}</b>`:''}${p.by?`<span>${esc(p.by)}</span>`:''}</div>`:''}</div>`).join('')}</div>`;
+ v.classList.add('on');document.documentElement.style.overflow='hidden';
+ const scr=v.querySelector('.sc'),ct=v.querySelector('.ct');
+ requestAnimationFrame(()=>{scr.scrollTo({left:start*scr.clientWidth,behavior:'instant'});upd()});
+ const upd=()=>{if(ct)ct.textContent=(Math.round(scr.scrollLeft/(scr.clientWidth||1))+1)+' / '+photos.length};
+ scr.addEventListener('scroll',upd,{passive:true});
+ v.querySelectorAll('.sl').forEach(sl=>zoomable(sl,scr));
+ v.querySelector('.x').onclick=()=>closeViewer(true);
+ history.pushState({viewer:1},'');viewerOpen=true;
+}
+function closeViewer(pop){
+ if(!viewerOpen)return;viewerOpen=false;
+ const v=document.getElementById('viewer');v.classList.remove('on');v.innerHTML='';document.documentElement.style.overflow='';
+ if(pop&&history.state&&history.state.viewer)history.back();
+}
+window.addEventListener('popstate',()=>{if(viewerOpen)closeViewer(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeViewer(true)});
+function zoomable(sl,scr){
+ const im=sl.querySelector('img');let sc=1,tx=0,ty=0,d0=0,s0=1;const pts=new Map();
+ const apply=()=>{im.style.transform=`translate(${tx}px,${ty}px) scale(${sc})`;scr.style.overflowX=sc>1.01?'hidden':'auto';sl.style.touchAction=sc>1.01?'none':'pan-x'};
+ sl.addEventListener('pointerdown',e=>{pts.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pts.size===2){const [a,b]=[...pts.values()];d0=Math.hypot(a.x-b.x,a.y-b.y);s0=sc}});
+ sl.addEventListener('pointermove',e=>{
+  if(!pts.has(e.pointerId))return;const pv=pts.get(e.pointerId);pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(pts.size===2){const [a,b]=[...pts.values()];sc=Math.min(5,Math.max(1,s0*Math.hypot(a.x-b.x,a.y-b.y)/d0));if(sc===1){tx=ty=0}apply()}
+  else if(pts.size===1&&sc>1.01){tx+=e.clientX-pv.x;ty+=e.clientY-pv.y;apply()}
+ });
+ const up=e=>{pts.delete(e.pointerId);if(sc<=1.01){sc=1;tx=ty=0;apply()}};
+ sl.addEventListener('pointerup',up);sl.addEventListener('pointercancel',up);
+ sl.addEventListener('dblclick',()=>{if(sc>1.01){sc=1;tx=ty=0}else sc=2.5;apply()});
+}
+
+/* ===== START ===== */
+(function init(){
+ cur=location.hash||'#/loc';trail=[cur];
+ enter();render(false);
+ refreshAll(false);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-lastRefresh>15*60*1000)refreshAll(false)});
+ window.addEventListener('online',()=>refreshAll(false));
+ if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+})();
+</script>
+</body>
+</html>
